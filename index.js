@@ -160,4 +160,5 @@ function readFile (){
 inquirer.prompt(questions).then(answers => {
   console.log(JSON.stringify(answers, null, '  '));
   writeFile(generateMarkdown(answers))
-}):
+});
+
