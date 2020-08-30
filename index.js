@@ -19,7 +19,7 @@ fs.readFile("data.csv", "utf8", function(error, data) {
 
   console.log(data);
 
-// });
+ //});
 /*Starting prompt
   Prompt is going to ask for user info add md format and save it to var info,
   then is going to call function writeFiles and finally
@@ -63,6 +63,7 @@ const questions = [
       return 'Doe';
     }
     },
+
     {
       type: 'input',
       name: 'installation',
@@ -77,22 +78,36 @@ const questions = [
       }
       },
       {
-        type: 'input',
-        name: 'License',
-        message: "What's your license",
-        default: function() {
-          return 'Doe';
-        }
-        },
-        {
+        type: "list",
+        message: "Select license",
+        name: "License",
+        choices: [
+            "MIT",
+            "GVL-GPL 3.0",
+            "APACHE 2.0",
+            "BSD 3",
+            "None"
+          ]
+      }, 
+      {
+        type: "input",
+        message: "Contributors?",
+        name: "Contributors"
+    },
+    {
+        type: "input",
+        message: "How do you test your project?",
+        name: "Test"
+    },
+      {
           type: 'input',
           name: 'username',
           message: "What's your username",
           default: function() {
             return 'Doe';
           }
-          },
-          {
+      },
+      {
             type: 'inpute',
             name: 'email',
             message: "What's your email",
@@ -100,43 +115,7 @@ const questions = [
               return 'Doe';
             }
             },
-  {
-    type: 'input',
-    name: 'fav_color',
-    message: "What's your favorite color for a car",
-    transformer: function(color, answers, flags) {
-      const text = chalkPipe(color)(color);
-      if (flags.isFinal) {
-        return text + '!';
-      }
-
-      return text;
-    }
-  },
-  {
-    type: 'input',
-    name: 'phone',
-    message: "What's your phone number",
-    validate: function(value) {
-      const pass = value.match(
-        /^([01]{1})?[-.\s]?\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})\s?((?:#|ext\.?\s?|x\.?\s?){1}(?:\d+)?)?$/i
-      );
-      if (pass) {
-        return true;
-      }
-
-      return 'Please enter a valid phone number';
-    }
-  },
-  {
-    type: 'list',
-    name: 'Vehicles',
-    message: 'What types of vehicles do you like?',
-    choices: ['Sedan', 'Hatchback', 'Pick Up', 'Coupe', 'SUV', 'Sportcar'],
-    filter: function(val) {
-      return val.toUpperCase();
-    }
-  },
+  
   
 ];
 
@@ -153,12 +132,13 @@ function readFile (){
     if (err) {
       return console.log(err);
     }
-    conxsole.log(data);
+    console.log(data);
   });
 }
 
 inquirer.prompt(questions).then(answers => {
   console.log(JSON.stringify(answers, null, '  '));
   writeFile(generateMarkdown(answers))
+});
 });
 

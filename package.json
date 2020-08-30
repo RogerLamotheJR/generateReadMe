@@ -1,7 +1,7 @@
 {
   "name": "node.js-homework",
   "version": "1.0.0",
-  "description": "",
+  "description": "Create a command line to geerates a reame.md",
   "main": "index.js",
   "dependencies": {
     "chalk-pipe": "^4.0.0",
@@ -12,6 +12,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Roger Lamothe",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RogerLamotheJR/generateReadMe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RogerLamotheJR/generateReadMe/issues"
+  },
+  "homepage": "https://github.com/RogerLamotheJR/generateReadMe#readme"
 }
